@@ -1,13 +1,13 @@
-# borrador.py
-from app import create_app  # o donde crees tu app Flask
+from app import app
 from extensiones import db
-from models import Servicio
-
-app = create_app()  # Inicializa tu app Flask
+from sqlalchemy import text
 
 with app.app_context():
-    # ⚠️ Esto borrará todos los datos de la tabla servicios
-    Servicio.__table__.drop(db.engine, checkfirst=True)
-    Servicio.__table__.create(db.engine, checkfirst=True)
+    with db.engine.connect() as conn:
+        conn.execute(text("""
+            ALTER TABLE evento
+            ADD COLUMN IF NOT EXISTS tipo_fiesta VARCHAR(50);
+        """))
+        conn.commit()
 
-    print("Tabla 'servicios' recreada con éxito.")
+    print("✅ Columna tipo_fiesta creada correctamente")

@@ -20,6 +20,7 @@ class Evento(db.Model):
 
     # 👉 Se mantiene como texto por ahora
     municipio = db.Column(db.String(50))
+    tipo_fiesta = db.Column(db.String(50))
 
     nombre_salon = db.Column(db.String(100))
     direccion = db.Column(db.String(200))
@@ -62,6 +63,20 @@ class Municipio(db.Model):
 
     def __repr__(self):
         return f"<Municipio {self.nombre}>"
+# ---------------------------
+# MODELO MUNICIPIO
+# ---------------------------
+class Tipo_fiesta(db.Model):
+    __tablename__ = 'tipo_fiesta'
+
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(100), nullable=False, unique=True)
+    fecha_registro = db.Column(db.DateTime, default=func.now())
+
+    def __repr__(self):
+        return f"<Municipio {self.nombre}>"
+
+
 
 from flask_login import UserMixin
 from extensiones import db

@@ -1,6 +1,6 @@
 from flask import Blueprint, render_template_string, request, redirect, url_for
 from extensiones import db
-from models import Evento, Servicio, Municipio
+from models import Evento, Servicio, Municipio, Tipo_fiesta
 from datetime import datetime
 
 formularios_bp = Blueprint('formularios', __name__)
@@ -153,6 +153,7 @@ def registro_exitoso():
       <p><strong>Horas:</strong> {{ evento.cantidad_horas }}</p>
       <p><strong>Servicios:</strong> {{ evento.servicios_interes }}</p>
       <p><strong>Municipio:</strong> {{ evento.municipio }}</p>
+      <p><strong>Tipo_fiesta:</strong> {{ evento.tipo_fiesta }}</p>
       <p><strong>Salón:</strong> {{ evento.nombre_salon or 'N/A' }}</p>
       <p><strong>Dirección:</strong> {{ evento.direccion or 'N/A' }}</p>
     </div>
@@ -189,6 +190,7 @@ def registro_exitoso():
   const horas = "{{ evento.cantidad_horas|e }}";
   const servicios = "{{ evento.servicios_interes|e }}";
   const municipio = "{{ evento.municipio|e }}";
+  const tipo_fiesta = "{{ evento.tipo_fiesta|e }}";
   const salon = "{{ (evento.nombre_salon or 'N/A')|e }}";
   const direccion = "{{ (evento.direccion or 'N/A')|e }}";
 
@@ -247,6 +249,8 @@ def generar_formulario_html(tipo, servicios):
             horas.append(f"{h:02d}:{m}")
 
     municipios = [m.nombre for m in Municipio.query.order_by(Municipio.nombre).all()]
+    tipo_fiesta = [m.nombre for m in Tipo_fiesta.query.order_by(Tipo_fiesta.nombre).all()]
+
 
     return render_template_string("""
 <!DOCTYPE html>
@@ -327,6 +331,13 @@ def generar_formulario_html(tipo, servicios):
             <option>{{ m }}</option>
           {% endfor %}
         </select>
+        
+        <select name="tipo_fiesta" required class="w-full p-3 rounded-lg text-black focus:outline-none">
+          <option value="">Tipo de fiesta</option>
+          {% for m in tipo_fiesta %}
+            <option>{{ m }}</option>
+          {% endfor %}
+        </select>
 
         <input name="nombre_salon" placeholder="Nombre del salón" class="w-full p-3 rounded-lg text-black focus:outline-none">
         <input name="direccion" placeholder="Dirección (calle y número)" class="w-full p-3 rounded-lg text-black focus:outline-none">
@@ -343,7 +354,7 @@ def generar_formulario_html(tipo, servicios):
   </div>
 </body>
 </html>
-""", tipo=tipo, horas=horas, servicios=servicios, municipios=municipios)
+""", tipo=tipo, horas=horas, servicios=servicios, tipo_fiesta=tipo_fiesta, municipios=municipios)
 
 
 # ---------------------------
@@ -364,6 +375,7 @@ def formulario_pintacaritas():
             cantidad_horas=request.form.get('cantidad_horas'),
             servicios_interes=", ".join(request.form.getlist('servicios_interes')),
             municipio=request.form['municipio'],
+            tipo_fiesta=request.form['tipo_fiesta'],
             nombre_salon=request.form.get('nombre_salon'),
             direccion=request.form.get('direccion')
         )
@@ -392,6 +404,7 @@ def formulario_glitter():
             cantidad_horas=request.form.get('cantidad_horas'),
             servicios_interes=", ".join(request.form.getlist('servicios_interes')),
             municipio=request.form['municipio'],
+            tipo_fiesta=request.form['tipo_fiesta'],
             nombre_salon=request.form.get('nombre_salon'),
             direccion=request.form.get('direccion')
         )

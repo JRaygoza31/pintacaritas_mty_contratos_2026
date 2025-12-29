@@ -1,0 +1,221 @@
+﻿id,tipo_evento,tipo_fiesta,nombre_cliente,whatsapp,fecha_evento,hora_inicio,hora_termino,cantidad_horas,servicios_interes,municipio,nombre_salon,direccion,fecha_registro,folio_manual,total,anticipo,restan,comentarios
+1,Glitter,XV AÑOS,Erika Ascencio,8180116365,17/01/2026,9:00pm,11:00pm,2 horas,Glitter Bar Deluxe,MONTERREY,Las Pampas Eventos,Av. 2 de Abril #2302 Col. Roma,2025-12-30 00:40:42,150,"$5,000.00","$5,000.00",$0.00,PAQUETE COMPLETO CON MOBILIARIO
+2,Glitter,Posada,I CAN HEALTH CENTER - PALOMA DE LA GARZA GONZALEZ,8110505446,12/12/2025,9:00pm,11:00pm,2 horas,Glitter Party,SPGG,CHEZ RESTAURANTE BAR,TREBOL PARK,2025-12-31 00:40:42,151,"$9,000.00","$2,000.00","$7,000.00",PAQUETE ESPECIAL NEON GLITTER
+3,Glitter,XV años,Claudia Mojarro Ramirez,8116072540,01/11/2025,9:00pm,10:00pm,1 hora,Carrito de Glitter,MONTERREY,Quinta Encanto,"Luis Moreno #5101, Col Niño Artillero, Monterrey",2026-01-01 00:40:42,152,"$1,800.00",$500.00,"$1,300.00",INCLUYE STAFF
+4,Glitter,XV años,Ivonn Domínguez Hernandez,8120213642,18/10/2025,10:30pm,11:30pm,1 hora,Carrito de Glitter,SPGG,Quinta las huertas eventos,"Av las Huertas 186, Sin Nombre de Col 6, 66362 Cdad. Santa Catarina, N.L",2026-01-02 00:40:42,153,"$1,800.00",$500.00,"$1,300.00",
+5,Glitter,Boda,Andrea Concepción Salcido Garza,8116330885,31/01/2026,10:00pm,11:00pm,1 hora,Charola Neon de Glitter,MONTERREY,ICON,"Blvd. Antonio L. Rodríguez 2000, Santa María, 64650 Monterrey, N.L.",2026-01-03 00:40:42,154,"$1,500.00",$500.00,"$1,000.00",INCLUYE STAFF
+6,Glitter,XV años,Zarina arocha garza,8183627121,27/06/2026,9:30am,11:30am,2 horas,Carrito de Glitter,MONTERREY,Las lomas eventos,"Ignacio morones Prieto 2808 pte, del Carmen mty 64710",2026-01-04 00:40:42,155,"$2,500.00",$500.00,"$2,000.00",INCLUYE MAQUILLISTA
+7,Glitter,Cumpleaños,Diana torres,8110250302,29/11/2025,9:30pm,10:30pm,1 hora,Carrito de Glitter,MONTERREY,Salon Polivalente,Clup Deportivo Colinas,2026-01-05 00:40:42,157,"$1,800.00",$500.00,"$1,300.00",INCLUYE STAFF
+8,Glitter,Posada,Brandon Ordoñez,813484,11/12/2025,6:00pm,9:00pm,3 horas,Glitter Bar Deluxe,MONTERREY,CINTERMEX,CINTERMEX,2026-01-06 00:40:42,158,"$15,000.00","$15,000.00",$0.00,4 MAQULLISTAS
+9,Glitter,Posada,Brandon Ordoñez,8134849763,12/12/2025,6:00pm,9:00pm,3 horas,Glitter Bar Deluxe,MONTERREY,CINTERMEX,CINTERMEX,2026-01-07 00:40:42,159,"$15,000.00",$0.00,"$15,000.00",4 MAQUILLISTAS
+10,Glitter,Evento de Marca,Paola Medina,8132668740,25/04/2026,10:30pm,11:30pm,1 hora,Carrito de Glitter,MONTERREY,Gala Ellika Eventos,Plaza Forum Leones 3er Nivel,2026-01-08 00:40:42,160,"$1,800.00",$500.00,"$1,300.00",MAQUILLISTA CON CARRITO
+11,Glitter,XV años,Cindy Ruiz Herrera,8132335566,10/01/2026,10:00pm,12:00pm,2 horas,Party Neon,GUADALUPE,Palacio Real,Ac Americas,2026-01-09 00:40:42,161,"$2,000.00",$500.00,"$1,500.00",MAQUILLAJE NEON CON MOBILIARIO PRO
+12,Pintacaritas,,Jazmine Cavazos,8131566460,07/02/2026,3:00pm,5:00pm,2 horas,Carrito de Glitter,MONTERREY,Paninos land,Av garza sada,2026-01-10 00:40:42,184,"$2,000.00",$500.00,"$1,500.00",Incluye Makeup Artist Glitter
+13,Pintacaritas,,Carmen Araceli Lobo Esquivias,8125165590,29/11/2025,4:00pm,6:00pm,2 horas,Pintacaritas Profesional,SANTA CATARINA,"""El Patio Eventos""","calle: San José 452-segundo piso, San Humberto, 66120 Santa Catarina, N.L.",2026-01-11 00:40:42,185,"$1,800.00",$500.00,"$1,300.00",INCLUYE MOBILIARIO PROFESIONAL
+14,Pintacaritas,,Melissa aldape,8117996300,12/10/2025,1:00PM,3:00PM,2 horas,Pintacaritas Profesional y Tatuajes personalizados,SPGG,Arboleda salon de eventos,Arboleda,2026-01-12 00:40:42,186,"$2,800.00",$500.00,"$2,300.00",INCLUYE MOBILIARIO PROFESIONAL
+15,Pintacaritas,,mariana torres,8119100440,22/10/2025,4:30pm,6:30pm,2 horas,Pintacaritas Profesional,SPGG,Parque Cortijo del Valle,don quijote 121 cortijo del valle,2026-01-13 00:40:42,187,"$2,800.00",$500.00,"$2,300.00",INCLUYE MOBLIARIO Y STAND DE TATUAJES
+16,Pintacaritas,,Alejandra Martínez,8182523306,23/11/2025,4:00pm,6:00pm,2 horas,2 STAFF Pintacaritas Profesional,SPGG,Irish monterrey,Batallón de San Patricio,2026-01-14 00:40:42,188,"$2,800.00",$0.00,"$2,800.00",2 PINTACARITAS CON MOBLIARIO
+17,Pintacaritas,,Ana Lucía muñoz,6444308959,12/10/2025,3:·30pm,5:30pm,2 horas,CARRITO DE GLITTER,MONTERREY,Fraccionamiento cumbres San Agustin,Provenza 1170 cumbres san agustin privada francia,2026-01-15 00:40:42,189,"$1,500.00",$500.00,"$1,000.00",INCLUYE STAFF
+18,Pintacaritas,,Deniss Gámez,8182735757,20/10/2025,5:00pm,7:30pm,2 horas,PINTACARITAS PROFESIONAL,MONTERREY,Paninos Land,"Av. Eugenio Garza Sada Sur 1892, Sin Nombre de Col 42, 64860 Monterrey, N.L.",2026-01-16 00:40:42,190,"$1,800.00",$500.00,"$1,300.00",INCLUYE MOBILIARIO
+19,Pintacaritas,,Catalina Trad,8110440635,03/10/2025,4:30pm,6:30pm,2 horas,Pintacaritas Básico,SPGG,Casa,Rio Volga 127 pte esquina con rio balsas. Colonia del Valle. San Pedro,2026-01-17 00:40:42,191,"$1,300.00","$1,300.00",$0.00,NO INCLUYE MOBILIARIO
+20,Pintacaritas,,Fernanda Ramírez,8110145443,18/10/2025,11:00am,1:00pm,2 horas,"Pintacaritas Básico, Taller de Slime, Taller Decoración de Lentes",SPGG,Olinca parque del agua,Del agua al fondo,2026-01-18 00:40:42,192,"$4,800.00","$4,800.00",$0.00,INCLUYE MOBILIARIO Y STAFF
+21,Pintacaritas,,ELIZABETH JULIAN,8181850237,10/10/2025,4:30pm,5:30pm,1 hora,PINTACARITAS PROFESIONAL,SPGG,KÍNDER BETA,Ah. Alfonso reyes 218 (una casa blanca con portón negro antes de llegar al Cecvac) si vienes de la rotonda del campestre a la rotonda de colorines,2026-01-19 00:40:42,193,"$1,300.00",$500.00,$800.00,INCLUYE MOBLIARIO Y STAFF
+22,Pintacaritas,,Ana Victoria Guerrero Ivarra,4423767574,13/10/2025,5:00pm,6:00pm,1 hora,Pintacaritas Profesional,SANTIAGO,Santiago Bike,Avenida La Leona,2026-01-20 00:40:42,194,"$1,300.00",$500.00,$800.00,INCLUYE MOBILIARIO Y STAFF
+23,Pintacaritas,,Brenda Lizbeth López Rosales,8112447983,17/11/2025,5:30pm,6:30pm,1 hora,"Pintacaritas Básico, Glitter Bar Kids",MONTERREY,Paninos Land,Garza Sada,2026-01-21 00:40:42,195,"$5,300.00","$3,300.00","$2,000.00",60% DE DESCTO
+24,Pintacaritas,,Erika de la Fuente Nava,8112459780,09/11/2025,3:·30pm,5:30pm,2 horas,"Pintacaritas Profesional, Glitter Bar Kids",MONTERREY,Sunnyland,"Av. Revolución 2021, Ladrillera, 64830 Monterrey, N.L.",2026-01-22 00:40:42,196,"$4,600.00","$1,000.00","$3,600.00",INLCUYE MOBILIARIO Y STAFF
+25,Pintacaritas,,Adriana Arreola,8110293094,10/10/2025,11:00am,12:00pm,1 hora,Pintacaritas Profesional,MONTERREY,Espacio Luz y Amor,Av. San Pio X 410,2026-01-23 00:40:42,197,"$1,300.00","$1,200.00",$100.00,INCLUYE MOBILIARIO Y STAFF
+26,Pintacaritas,,Cindy Guzmán,8110759421,08/11/2025,11:00am,1:00PM,2 HORAS,Pintacaritas Profesional,SPGG,Fun Planet Valle,Plaza Auriga Av Real SAN Agustín 66260,2026-01-24 00:40:42,198,"$1,800.00",$500.00,"$1,300.00",INCLUYE MOBILIARIO Y STAFF
+27,Pintacaritas,,Minerva Mayela Orta Lozano,8113299491,08/11/2025,6:30pm,9:30pm,3 horas,6 Pintacaritas Profesionales,MONTERREY,Colegio Tonallí,"C. Acueducto San Francisco #1020 Colonia El Uro C.P. 64986 Monterrey, Nuevo León",2026-01-25 00:40:42,199,"$12,000.00",$500.00,"$11,500.00",INCLUYE MOBILIARIO Y STAFF
+28,Pintacaritas,,Monica Garcia,8119995790,01/11/2025,9:00pm,12:00pm,3 horas,PINTACARITAS HALLOWEEN ADULTOS,SANTIAGO,quinta propia,"los fierros, santiago, nuevo leon",2026-01-26 00:40:42,200,"$3,700.00",$500.00,"$3,200.00",INCLUYE MOBILIARIO
+29,Pintacaritas,,Suzette Rodríguez,8115336721,29/11/2025,3:00pm,5:00pm,2 horas,"Pintacaritas Profesional, Glitter Bar Kids",MONTERREY,Draggytoons,Prolongación Ruiz cortinez 5000,2026-01-27 00:40:42,201,"$5,000.00","$5,000.00",$0.00,INLCUYE STAFF Y MOBILIARIO
+30,Pintacaritas,,Lucia Medrano,8114706941,20/10/2025,4:00pm,6:00pm,2 horas,Pintacaritas Profesional,SPGG,Kids&kids,"Plaza Nativa, Alfonso Reyes 901",2026-01-28 00:40:42,202,"$1,800.00",$500.00,"$1,300.00",INCLUYE MOBILIARIO Y STAFF
+31,Pintacaritas,,Daniela Salinas delgado,8180108063,25/10/2025,11:30am,1:00pm,2 horas,Pintacaritas Profesional,SPGG,Hoopla tanarah,Plaza tanarah,2026-01-29 00:40:42,203,"$1,800.00",$500.00,"$1,300.00",INLCUYE STAFF Y MOBILIARIO
+32,Pintacaritas,,BABY BALLET,8110127201,29/10/2025,5:30pm,7:30pm,2 horas,Pintacaritas Profesional,MONTERREY,"CUMBRES SAN AGUSTIN, SECTOR CHELSEA",CUMBRES,2026-01-30 00:40:42,204,"$2,000.00",$500.00,"$1,500.00",PINTACARITAS TEMATICA HALLOWEEN
+33,Pintacaritas,,YULISSA SOLIS,8140080148,31/10/2025,08:00am,2:00PM,4 HORAS,Pintacaritas Profesional,GUADALUPE,EMPRESA SKF LA SILLA,"AV. LA SIERRA #1303, PARQUE INDUSTRIAL LA SILLA CO 67193",2026-01-31 00:40:42,205,"$8,000.00",$0.00,"$8,000.00","2 turnos de 2 horas 8am a 10am 12pm a 2PM 
+PRIMER TURNO CARAS COMPLETAS 
+SEGUNDO TURNO MEDIAS CARAS"
+34,Pintacaritas,,Karla Paola Mendivil Osuna,6421032433,31/10/2025,11:30am,1:30pm,2 horas,Pintacaritas Profesional,MONTERREY,Corporativo Farmacias Benavides,"La dirección es Avenida Fundadores 935, Valle del Mirador, en San Pedro Garza García, Nuevo León",2026-02-01 00:40:42,206,"$2,000.00","$1,000.00","$1,000.00",PINTACARITAS HALLOWEEN NIÑOS
+35,Pintacaritas,,JUAN JOSE CEDILLO ALEMAN,8180290310,01/11/2025,6:45pm,9:45pm,3 horas,"Pintauñitas, Perfume Bar",MONTERREY,Calle SIERRA ESMERALDA #101 Col.Arroyo Seco Monterrey Nuevo León 64740,Calle SIERRA ESMERALDA #101 Col.Arroyo Seco Monterrey Nuevo León 64740,2026-02-02 00:40:42,207,"$4,800.00",$500.00,"$4,300.00",INCLUYE STAFF Y MOBILIARIO
+36,Pintacaritas,,Natalia Morelos Herrera,8115552162,23/10/2025,5:00pm,6:00pm,1 hora,Pintacaritas Básico,MONTERREY,Rolling,"Villas del Uro 140, plaza Omnia",2026-02-03 00:40:42,208,"$1,000.00",$500.00,$500.00,NO INCLUYE MOBILIARIO
+37,Pintacaritas,,Maria Fernanda Castellanos,8122020124,10/02/2026,4:30pm,6:30pm,2 horas,Pintacaritas Profesional,SPGG,Tikitots,"Plaza Tribeca, Av. José Vasconcelos 430-2do Nivel, Col. del Valle, Del Valle,",2026-02-04 00:40:42,209,$0.00,$0.00,$0.00,INCLUYE MOBILIARIO Y STAFF
+38,Pintacaritas,,Irma Solis,8182540690,25/10/2025,10:·30am,11:30am,2 horas,"Pintacaritas Profesional, Taller de Globos Sensoriales",SPGG,Parque Prados de la Sierra,"Candelaria, Prados de La Sierra, 66230 San Pedro Garza García, N.L.",2026-02-05 00:40:42,210,"$3,000.00",$500.00,"$2,500.00",INLCUYE MOBILIARO Y STAFF
+39,Pintacaritas,,Marianna giandusa,8184589143,30/11/2025,08:00am,1:00pm,5 horas,Pintacaritas Básico,MONTERREY,Cintermex,Cintermex,2026-02-06 00:40:42,211,"$16,250.00",$500.00,"$15,750.00","5 PINTACARITAS BASICOS
+5 HORAS DE SERVICIO"
+40,Pintacaritas,,Loudav modad,5569836212,06/11/2025,4:30pm,6:30pm,2 horas,Pintacaritas Profesional,SPGG,Palytica armida,Frida Kahlo 303,2026-02-07 00:40:42,212,"$1,800.00",$500.00,"$1,300.00",INCLUYE MOBILIARIO Y STAFF
+41,Pintacaritas,,Priscilia del Ángel,8117908798,24/10/2025,4:00pm,6:00pm,2 horas,Pintacaritas Profesional,MONTERREY,Casa particular,Colina Baja 305 colinas del valle,2026-02-08 00:40:42,213,"$2,000.00",$500.00,"$2,000.00",MAQUILLAJE ESPECIAL
+42,Pintacaritas,,Paulina Bremer,8111623585,25/10/2025,4:00pm,8:00pm,4 horas,PINTACARITAS PROFESIONAL,MONTERREY,Micropolis,"Micropolis, Av. Eugenio Garza Sada 3820",2026-02-09 00:40:42,214,"$4,000.00",$0.00,"$4,000.00",INCLUYE MOBILIARIO PROFESIONAL
+43,Pintacaritas,,Paulina Bremer,8111623585,26/10/2025,2:00pm,6:00pm,4 horas,PINTACARITAS PROFESIONAL,MONTERREY,Micropolis,"Micropolis, Av. Eugenio Garza Sada",2026-02-10 00:40:42,215,"$4,000.00",$0.00,"$4,000.00",INCLUYE MOBILIARIO PROFESIONAL
+44,Pintacaritas,,Make Gonzale,8112440844,06/11/2025,4:00pm,6:00pm,2 horas,CARRITO DE GLITTER Y PINTAYESITOS,SPGG,No,Lomas 1100 colonia la cima,2026-02-11 00:40:42,216,"$4,000.00",$500.00,"$3,500.00",INCLUYE STAFF Y MOBILIARIO
+45,Pintacaritas,,Esthela Isabel Flores Suarez,8119545592,30/10/2025,1:00pm,4:00pm,2 horas,Pintacaritas Profesional,MONTERREY,"En mi casa, como el año pasado",2 de abril 904 entre baja California y chihuahua colonia nuevo repueblo,2026-02-12 00:40:42,217,$0.00,$0.00,$0.00,
+46,Pintacaritas,,Ariane Galazzini,8112814779,23/10/2025,4:00pm,6:00pm,2 horas,"Pintacaritas Básico, Pintacaritas Profesional",SPGG,Deportivo san agustin,Deportivo san agustin,2026-02-13 00:40:42,218,$0.00,$0.00,$0.00,
+47,Pintacaritas,,Ariam Ramirez,8120732744,01/11/2025,4:00pm,6:00pm,2 horas,Pintacaritas Profesional,SPGG,Casa verde,Ticoman 1190,2026-02-14 00:40:42,219,$0.00,$0.00,$0.00,
+48,Pintacaritas,,Angelica Lizeth Garza Castillo,8136080131,22/11/2025,3:45pm,4:45pm,1 hora,Pintacaritas Profesional,GUADALUPE,Jipi jop,Constituyentes de Nuevo León 155 Linda Vista,2026-02-15 00:40:42,220,"$2,450.00",$500.00,"$1,950.00","BACK NEON, PEDESTAL DE COLETAS, PAR DE LUCES UV Y MAQUILLAJE NEON"
+49,Pintacaritas,,Mariel Martinez,8116005424,14/11/2025,4:30pm,5:30pm,1 hora,Pintacaritas Profesional,SPGG,Tip top en plaza Saaghi,"Av real San Agustin #302, Residencial San Agustin",2026-02-16 00:40:42,221,"$1,300.00",$500.00,$800.00,INCLUYE MOBLIARIO PROFESIONAL
+50,Pintacaritas,,Yesenia Cuellar Campos,8116839789,22/11/2025,11:00am,1:00pm,2 horas,Pintacaritas Profesional,MONTERREY,Tick Tack Boom,Gonzalitos 315 (plaza real 2do. Piso),2026-02-17 00:40:42,222,"$1,500.00",$500.00,"$1,000.00",INCLUYE MOBLIARIO PROFESIONAL
+51,Pintacaritas,,Sofia,8115020787,01/11/2025,5PM,7PM,2 horas,PINTACARITAS HALLOWEEN,SPGG,San Patricio 150. Zona los callejones. 66228,San Patricio 150 zona los callejones. Entre morones Prieto y capellania,2026-02-18 00:40:42,223,"$2,000.00",$500.00,"$1,500.00",INCLUYE MOBILIARIO
+52,Pintacaritas,,Gris González,8187051923,07/11/2025,6:00pm,9:00pm,3 horas,Pintacaritas Básico,MONTERREY,Instituto Excélsior,Hamburgo 333,2026-02-19 00:40:42,224,"$2,300.00",$0.00,"$2,300.00",NO INCLUYE MOBILIARIO
+53,Pintacaritas,,Denisse Alcalá,8181119959,12/11/2025,4:30pm,6:30pm,2 horas,PINTACARITAS Y TATUAJES PERSONALIZADOS,SPGG,Playtica Armida,"Avenida circuito Frida Khalo 303, Hacienda de la sierra Valle Oriente",2026-02-20 00:40:42,225,"$2,800.00",$500.00,"$2,300.00",INCLUYE MOBILIARIO Y STAND DE TATUAJES
+54,Pintacaritas,,Gaby Ceballos,8114818077,21/11/2025,3:00pm,5:00pm,2 horas,Pintacaritas Básico,SAN NICOLAS,DIF Monarcas,"Av. Concordia SN, Escobedo",2026-02-21 00:40:42,226,$0.00,$0.00,$0.00,SERVICIO DE CORTESIA
+55,Pintacaritas,,Brenda Rdz,8112452582,19/12/2025,5:00pm,7:30pm,2 horas,Pintacaritas Profesional,MONTERREY,Tic tac toe cumbres,Cumbres elite,2026-02-22 00:40:42,227,"$1,800.00",$500.00,"$1,300.00",INCLUYE MOBILIARIO PROFESIONAL Y STAFF
+56,Pintacaritas,,Catalina González Chapa,8114810726,18/11/2025,4:30pm,6:30pm,2 horas,Glitter Bar Kids con pintacaritas Basico,MONTERREY,Digiland,Antigua camino a villa de Santiago en la plaza en el segundo piso,2026-02-23 00:40:42,228,"$3,000.00",$500.00,"$2,500.00",PINTACARITAS Y 10 COLETAS
+57,Pintacaritas,,Fernanda Lucia Gutiérrez Gonzalez,491771434622,08/12/2025,4:30pm,6:30pm,2 horas,Pintacaritas Profesional,MONTERREY,Palapa fraccionamiento Antigua,Fraccionamiento antigua palapa,2026-02-24 00:40:42,229,"$1,800.00",$500.00,"$1,300.00",INCLUYE MOBILIARIO PROFESIONAL Y STAFF
+58,Pintacaritas,,Lorena,8110311114,14/11/2025,4:30pm,5:30pm,1 hora,Promo especial 2 horas Pintacaritas Pro y Taller,MONTERREY,Lerma 1834 mitras centro,Lerma 1834 mitras centro,2026-02-25 00:40:42,230,"$2,500.00",$500.00,"$2,000.00","4:30PM - 5:30PM PINTACARITAS
+5:30PM - 6:30PM CABALLETES"
+59,Pintacaritas,,Cristina González,8115259475,20/11/2025,4:30pm,6:30pm,2 horas,Glitter Bar Kids,SPGG,Casa,Privada Río Rosas 450 S. Colonia del Valle,2026-02-26 00:40:42,231,"$4,500.00",$500.00,"$4,000.00",GLITTER BAR KIDS CON COLETAS DE ROMI
+60,Pintacaritas,,Christel Husemann,8119107429,13/11/2025,4:00pm,6:00pm,2 horas,Promo especial 2 horas Pintacaritas Pro y Taller,SPGG,Casa Particular,Guerrero 807-A Col. Palo Blanco entre Alfonso Reyes y Puebla,2026-02-27 00:40:42,232,"$3,000.00",$0.00,"$3,000.00","PINTACARITAS PROFESIONAL
+TALLER DE YESITOS
+TALLER DE ORBES"
+61,Pintacaritas,,Abigail Hernández López,8123372102,07/01/2026,4:00pm,6:00pm,2 horas,PINTACARITAS Y TATUAJES PERSONALIZADOS,MONTERREY,Digiland,Antiguo camino a Villa de santiago el vergel 480 local 202 las diligencias en Monterrey no,2026-02-28 00:40:42,233,"$2,800.00",$500.00,"$2,300.00",INCLUYE STAND DE TATUAJES Y MOBILIARIO PROFEISONAL
+62,Pintacaritas,,Gaby Lizette Gonzalez,8110507863,07/12/2025,11:00am,2:00pm,3 horas,Promo especial 2 horas Pintacaritas Pro y Taller,MONTERREY,Hoopla Zone. Salón Action Zone,Plaza Helice piso 3. San Jerónimo,2026-03-01 00:40:42,234,"$3,000.00",$500.00,"$2,500.00","11AM-1PM PINTACARITAS PROFESIONAL, 1PM-2PM TALLER DE YESITOS"
+63,Pintacaritas,,Claudia Bun-K,81 1594 3277,22/11/2025,1:00pm,3:00pm,2 horas,Glitter Bar Kids,SPGG,Alpino Chipinque,Alpino Chipinque,2026-03-02 00:40:42,235,"$5,000.00",$0.00,"$5,000.00","MOBILIARIO GLITTER BAR, TRENZAS TIPO COLA DE RATA (BLANCO Y TONOS PASTELES)"
+64,Pintacaritas,,Kassandra Moreno,8184767543,04/12/2025,9:30am,10:·30am,1 hora,Pintacaritas Básico,MONTERREY,Hospital Universitario Departamento Oncología,Av. Madero y Gonzalitos S/N. Col. Mitras Centro. C.P. 64440,2026-03-03 00:40:42,236,$100.00,$500.00,$500.00,
+65,Pintacaritas,,Estefanía Domene hickman,81 8029 7735,26/11/2025,4:30pm,6:30pm,2 horas,Pintacaritas Profesional,SPGG,Casa residencial,Privada Tolima #286 Col. Villamontaña,2026-03-04 00:40:42,237,$900.00,$900.00,$0.00,INCLUIR TATUAJES DE AGUA
+66,Pintacaritas,,Lucia Montemayor Martinez,8116312219,23/11/2025,11:00am,12:00pm,1 hora,Pintacaritas Profesional,SPGG,Lucena,Sendero de las Privanzas #300,2026-03-05 00:40:42,238,"$1,300.00",$500.00,$800.00,
+67,Pintacaritas,,Diana torres,8110250302,29/11/2025,9:30pm,10:30pm,1 hora,Carrito de Glitter,MONTERREY,Club deportivo colinas - salón polivalente,"Manuel M. Ponce SN, en la colonia Colinas de San Jerónimo, Monterrey, N.L",2026-03-06 00:40:42,239,,,,
+68,Pintacaritas,,Maxifiesta,8123513189,20/12/2025,10:00am,12:00pm,2 horas,Pintacaritas Profesional,APODACA,OP MOBILITY,Av parque industrial Monterrey 608 col parque industrial MPO Apodaca,2026-03-07 00:40:42,240,"$8,000.00","$1,000.00","$7,000.00",5 PINTACARITAS
+69,Pintacaritas,,Roberta,81 8459 6098,20/12/2025,1:30pm,2:30pm,1 hora,Pintacaritas Básico,MONTERREY,Espacio de luz y amor,Espacio de luz y amor,2026-03-08 00:40:42,241,$800.00,$800.00,$0.00,
+70,Pintacaritas,,Erika Lizeth Mata Nieto,81 1630 8793,20/12/2025,5:30pm,7:30pm,2 horas,Pintacaritas Profesional,APODACA,Palapa de la colonia,"Sierra Alta, Col. Santa Sofia.",2026-03-09 00:40:42,121,"$1,800.00","$1,800.00",$0.00,INCLUYE MOBILIARIO PROFESIONAL
+71,Pintacaritas,,Jessica Montenegro,8117949891,05/12/2025,4:00pm,6:00pm,2 horas,Glitter Bar Kids,MONTERREY,Kimbomba,Villas del uro 140,2026-03-10 00:40:42,242,"$3,000.00",$500.00,"$2,500.00",
+72,Pintacaritas,,Irma Yolanda Cerna Mendoza,8122010586,28/12/2025,3:00pm,5:00pm,2 horas,Pintacaritas Profesional y Tatuajes personalizados,MONTERREY,Tic Tac Toe Garza Sada,Av Eugenio Garza Sada 3750 Country Mty NL,2026-03-11 00:40:42,243,"$3,300.00","$3,300.00",$0.00,PINTACARITAS PROFESIONAL Y 100 TATUAJES DE AGUA
+73,Pintacaritas,,Santiago Vitro,8121104333,30/11/2025,9:00am,12:00pm,3 horas,Pintacaritas Básico,MONTERREY,VITRO,VITRO,2026-03-12 00:40:42,244,"$9,000.00",$0.00,"$9,000.00",5 PINTACARITAS SIN MOBILIARIO
+74,Pintacaritas,,Karla Gonzalez,8115385652,07/12/2025,2:30pm,5:30pm,3 horas,Pintacaritas Profesional,MONTERREY,Colegio Formus,Colegio Formus,2026-03-13 00:40:42,245,"$3,500.00",$500.00,"$3,000.00",2 PINTACARITAS CON MOBILIARIO PROFESIONAL
+75,Pintacaritas,,MAYRA GONZALEZ,8115553829,24/01/2026,6:00pm,8:00pm,2 horas,Pintacaritas Neon,MONTERREY,QUINTA LOS ELEFANTES,Camino a las Aguilas 1019 sin Nombre de Col 51,2026-03-14 00:40:42,246,"$2,000.00",$500.00,"$1,500.00",PINTACARITAS CON MOBILIARIO PROFESIONAL NEON
+76,Pintacaritas,,Salme Marcos,8180293557,10/12/2025,4:30pm,6:30pm,2 horas,"Pintacaritas Profesional, Promo especial 2 horas Pintacaritas Pro y Taller",SPGG,priv. los cipreses #106 chipinque,san pedro,2026-03-15 00:40:42,247,"$2,800.00",$500.00,"$2,300.00",TALLER DE TATUAJES PERSONALIZADOS
+77,Pintacaritas,,Paola elizabeth Mejía Quintanilla,81 1762 2536,13/12/2025,5:00pm,7:00pm,2 horas,"Pintacaritas Profesional, Promo especial 2 horas Pintacaritas Pro y Taller",SANTIAGO,"Sierra de los altos lote 100
+Fraccionamiento Sierra vista 
+Santiago NL",Sierra vista Santiago NL,2026-03-16 00:40:42,248,"$3,500.00",$500.00,"$3,000.00",MOBILIARIO PROFESIONAL Y TALLER DE SLIME
+78,Pintacaritas,,Steffanie Carias,8714799576,29/11/2025,2:30pm,5:30pm,3 horas,"Pintacaritas Profesional, Taller de Slime, Caballetes",MONTERREY,Colegio San Roberto Campus Valle Alto,Av Valle Alto KM 1,2026-03-17 00:40:42,249,"$8,900.00",$0.00,"$8,900.00","PINTACARITAS Y TATUAJES (3HRS)
+CARITTAS A SANTA (3HRS)
+PINITOS DE NAVIDAD 1 HR
+CABALLETES 1 HR
+SLIME1 HR"
+79,Pintacaritas,,Samantha Muñoz,8181815982,07/01/2026,11:00am,12:00pm,1 hora,Pintacaritas Profesional,SANTA CATARINA,Salón de fiestas Wheeplay Santa Catarina,Calle camino a la Banda #201. Vía cordillera,2026-03-18 00:40:42,254,"$1,300.00",$500.00,$800.00,MOBILIARIO PROFESIONAL
+80,Pintacaritas,,Cecilia Ulloa,8110441245,10/01/2026,11:30am,1:30pm,2 horas,Glitter Bar Kids,MONTERREY,Cokoricos,"Av. Revolución 3804, Torremolinos, 64850 Monterrey, N.L.",2026-03-19 00:40:42,250,"$3,000.00",$500.00,"$2,500.00",MAQUILLISTA
+81,Pintacaritas,,Verónica Cantu Carreño,2284001451,10/12/2025,2:00pm,5:00pm,3 horas,Pintacaritas Profesional,MONTERREY,Gimnasio Jesús Hinojosa Tijerina,"Monterrey 400, Calle Rodríguez Gómez y Almazar, CP: 64258",2026-03-20 00:40:42,251,"$2,500.00",$500.00,"$2,000.00",MOBILIARIO PROFESIONAL
+82,Pintacaritas,,Deyanira Aguilar Torres,8145933175,19/12/2025,5:30pm,6:30pm,1 hora,Pintacaritas Profesional,GUADALUPE,Skygamers Plaza Linda Vista,Gral. Bonifacio Salinas Leal 5000 Torres de Linda Vista Guadalupe NL,2026-03-21 00:40:42,252,"$1,300.00",$500.00,$800.00,MOBILIARIO PROFESIONAL
+83,Pintacaritas,,Erick Sauceda,81 2351 2990,14/12/2025,08:00am,12:00pm,4 horas,Taller de cartitas y pinitos,SPGG,Afirme Valle,"Calz. San Pedro 129 sur, Del Valle, 66220 San Pedro Garza García, N.L.",2026-03-22 00:40:42,253,"$8,000.00","$8,000.00",$0.00,TALLER DE CARTITAS Y PINITOS
+84,Pintacaritas,,Luis bueno bragado,8114847256,11/12/2025,11:00pm,12:00am,1 hora,Carrito de Glitter y tatuajes personalizados,SPGG,Salón panorámico del club industrial,Club industrial,2026-03-23 00:40:42,255,"$2,160.00","$2,160.00",$0.00,CARRITO DE GLITTER Y 100 TATUAJES DE AGUA
+85,Pintacaritas,,Cristina Jacobo Posadas,8116605149,28/03/2026,3:·30pm,4:30pm,1 hora,Pintacaritas Profesional,GUADALUPE,Lingo lingo Party Guadalupe,"Avenida Azteca #175, Colonia Azteca , 67150 Guadalupe",2026-03-24 00:40:42,256,"$1,300.00",$500.00,$800.00,MOBILIARIO PROFESIONAL
+86,Pintacaritas,,Cypress County,8715493049,12/12/2025,9:30am,11:30am,2 horas,Pintacaritas Profesional,MONTERREY,Cypress County private School,P.° El barro #205 Colonia el barro Mty,2026-03-25 00:40:42,257,"$1,800.00",$500.00,"$1,300.00",MOBILIARIO PROFESIONAL
+87,Pintacaritas,,Carolina,8110607052,14/12/2025,4:00pm,5:00pm,1 hora,Pintacaritas Básico,SAN NICOLAS,Villas de Anahuac,"Villa del álamo 121, villas de anahuac, Escobedo, a un lado del colegio oxschool",2026-03-26 00:40:42,258,"$1,210.00","$1,210.00",$0.00,BASICO Y 6 COLETAS
+88,Pintacaritas,,Rosalinda Lizeth Chapa Chávez,8114137630,18/12/2025,08:00am,9:00am,1 hora,Maquillaje Renos,SAN NICOLAS,Jardín de Niños Lope de Vega,Cerro del Obispado S/N,2026-03-27 00:40:42,259,"$1,400.00",$0.00,"$1,400.00",$100 POR NIÑO
+89,Pintacaritas,,Mayra Gonzalez,81 1555 3829,21/12/2025,11:30am,1:30pm,2 horas,Pintacaritas Básico,MONTERREY,Rolling Skate Party,Carretera nacional,2026-03-28 00:40:42,260,$900.00,$0.00,$900.00,Pintacaritas Neon
+90,Pintacaritas,,Alejandra Rivera Flores,8121732793,15/12/2025,9:30pm,11:30pm,2 horas,Paquete Glow in the dark,MONTERREY,Elite cinemas,"Av. Paseo de los leones plaza sikara distrito urbano, elite cinemas",2026-03-29 00:40:42,261,"$3,500.00",$0.00,"$3,500.00","4 luces led UV 4 tripiies
+2 horas de iluminación 
+2 hrs de maquillaje neón
+Con 1 staff y mobiliario"
+91,Pintacaritas,,Ana Laura Barba,8182595450,17/12/2025,3:00pm,5:00pm,2 horas,Pintacaritas Profesional,MONTERREY,Bombastic park point,"Centro Comercial Park Point, Av Paseo de los Leones 99-Local 109, Cumbres Elite, Sector Villas, 64349 Monterrey, N.L.",2026-03-30 00:40:42,262,"$1,800.00",$500.00,"$1,300.00",Mobiliario profesional
+92,Pintacaritas,,Hiram Reyna Hernandez,8131775181,16/12/2025,6:00pm,8:00pm,2 horas,Pintacaritas Profesional,SPGG,Centrito (al aire libre),Rio Orinoco y Rio Tamazuchale,2026-03-31 00:40:42,263,"$3,000.00","$3,000.00",$0.00,
+93,Pintacaritas,,Gloria sepulveda,8115440327,17/01/2026,11:30am,1:30pm,2 horas,Pintacaritas Pro y Taller de Yesitos,SPGG,"Condominios Altus, salon de eventos","Humberto junco voigt 2315, col valle oriente",2026-04-01 00:40:42,264,"$3,000.00",$500.00,"$2,500.00",
+94,Pintacaritas,,Leticia Guadalupe Rojas Sanchez,8115996658,09/01/2026,5:00pm,7:00pm,2 horas,"Talle de Caritas de Pasto, Taller Decoración de Lentes",MONTERREY,Casa habitación,"Calle cometa Halley 311, col espacio cumbres sector Aldrin",2026-04-02 00:40:42,265,"$2,500.00",$500.00,"$2,000.00",
+95,Pintacaritas,,Patricia Quintanilla,8126328772,21/12/2025,08:00am,10:00am,2 horas,Pintacaritas Básico,MONTERREY,Parque fundidora,Parque Fundidora,2026-04-03 00:40:42,266,"$1,300.00",$0.00,"$1,300.00",Sin mobiliario
+96,Pintacaritas,,Johangel Urpin,8111535544,20/12/2025,11:00pm,1:00am,2 horas,Charola de Glitter,MONTERREY,Reloj vivo bar,"Carretera nacional 5000, nivel 1 local S-5",2026-04-04 00:40:42,267,"$1,800.00",$0.00,"$1,800.00",Charola de glitter neon
+97,Pintacaritas,,Leslie Valdez Galvan,8180109321,14/01/2026,4:30pm,7:30pm,2 horas,Pintacaritas Profesional,MONTERREY,Hoopla zone,Av. san Jerónimo 1104 col. san Jerónimo 64640 Mty N.L,2026-04-05 00:40:42,268,"$1,800.00",$500.00,"$1,300.00",Mobiliario profesional
+98,Pintacaritas,,Dulce Noriega,8123563244,03/01/2026,4:30pm,6:30pm,2 horas,Promo especial 2 horas Pintacaritas Pro y Taller,MONTERREY,Plaza sikara,Av paseo de los leones #1003 cumbres madeira,2026-04-06 00:40:42,269,,,,
+99,Pintacaritas,,Dulce Noriega,8123563244,24/01/2026,4:30pm,6:30pm,2 horas,Promo especial 2 horas Pintacaritas Pro y Taller,MONTERREY,PLAZA SIKARA,Av paseo de los leones #1003 en col cumbres madeira,2026-04-07 00:40:42,270,,,,
+100,Pintacaritas,,Alicia López,8110777555,17/04/2026,4:00pm,6:00pm,2 horas,Pintacaritas Profesional,SAN NICOLAS,Pui Party Club,"Av Juan Pablo II 450, Francisco Garza Sada, 66490 San Nicolás de los Garza, N.L.",2026-04-08 00:40:42,271,,,,
+101,Pintacaritas,,Alejandra Maiz,14257724678,26/12/2025,4:00pm,5:00pm,1 hora,Pintacaritas Profesional,SPGG,Casa privada,Ave. Pedregal del Valle 607 col. Pedregal del Valle,2026-04-09 00:40:42,272,"$1,300.00",$0.00,"$1,300.00",Mobiliario profesional
+102,Pintacaritas,,ANA SOFIA,8123817245,26/12/2025,6:00pm,8:00pm,2 horas,"Taller de Slime, Carrito de Glitter",GUADALUPE,"COLONIA SIETE COLINAS, BOLONIA 6756","BOLONIA 6756, COL SIETE COLINAS",2026-04-10 00:40:42,273,"$3,300.00",$500.00,"$2,800.00",Incluye mobiliario y staff
+103,Pintacaritas,,Mariela silva,8261279086,13/07/2026,4:00pm,6:00pm,2 horas,Carrito de Glitter,MONTERREY,DIGILAND,PLAZA EL VERGEL,2026-04-11 00:40:42,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,
+,,,,,,,,,,,,,,,,,,

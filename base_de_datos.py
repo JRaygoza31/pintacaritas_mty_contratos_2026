@@ -8,6 +8,8 @@ import csv
 import math
 from flask_login import login_required
 from auth import auth_bp
+from flask import session
+CLAVE_BASE_DATOS = "pcmty"
 
 
 
@@ -19,6 +21,15 @@ except Exception:
     PANDAS_AVAILABLE = False
 
 base_de_datos_bp = Blueprint('base_de_datos', __name__, url_prefix='/base-de-datos')
+
+@base_de_datos_bp.before_request
+def proteger_base_datos():
+    # permitir acceder a la página de contraseña
+    if request.endpoint == 'base_de_datos.password':
+        return
+
+    if not session.get("acceso_base_datos"):
+        return redirect(url_for("base_de_datos.password"))
 
 
 # =====================================================
@@ -50,6 +61,45 @@ def aplicar_filtros(query, tipo_evento, fecha_desde, fecha_hasta, qsearch):
         )
     return query
 
+@base_de_datos_bp.route('/password', methods=['GET', 'POST'])
+def password():
+    if request.method == 'POST':
+        if request.form.get('password') == CLAVE_BASE_DATOS:
+            session['acceso_base_datos'] = True
+            return redirect(url_for('base_de_datos.lista_eventos'))
+        else:
+            flash("❌ Contraseña incorrecta", "error")
+
+    return render_template_string("""
+    <!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="utf-8">
+        <title>Acceso restringido</title>
+        <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    </head>
+    <body class="bg-blue-100 flex items-center justify-center h-screen">
+
+        <form method="POST" class="bg-white p-8 rounded-xl shadow-lg w-80">
+            <h2 class="text-xl font-bold mb-4 text-center text-blue-700">
+                🔐 Acceso a Base de Datos
+            </h2>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Contraseña"
+                   class="w-full p-2 border rounded mb-4"
+                   required>
+
+            <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded">
+                Entrar
+            </button>
+        </form>
+
+    </body>
+    </html>
+    """)
+
 
 # =====================================================
 #                 LISTA DE EVENTOS
@@ -60,7 +110,6 @@ def lista_eventos():
     fecha_desde = request.args.get('fecha_desde', '')
     fecha_hasta = request.args.get('fecha_hasta', '')
     qsearch = request.args.get('q', '')
-
     page = request.args.get('page', 1, type=int)
     per_page = 10
 
@@ -178,6 +227,7 @@ function enableEdit(id) {
     <th class="px-2 py-2">ID</th>
     <th class="px-2 py-2">Cliente</th>
     <th class="px-2 py-2">Tipo</th>
+    <th class="px-2 py-2">Tipo de Fiesta</th>
     <th class="px-2 py-2">Fecha</th>
     <th class="px-2 py-2">Inicio</th>
     <th class="px-2 py-2">Fin</th>
@@ -217,6 +267,11 @@ function enableEdit(id) {
 </td>
 
 <td class="px-2 py-2">
+  <input type="text" name="tipo_fiesta" value="{{ ev.tipo_fiesta}}"
+         class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
+</td>
+
+<td class="px-2 py-2">
   <input type="date" name="fecha_evento"
          value="{{ ev.fecha_evento.strftime('%Y-%m-%d') if ev.fecha_evento }}"
          class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
@@ -242,6 +297,7 @@ function enableEdit(id) {
   <input type="text" name="municipio" value="{{ ev.municipio }}"
          class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
 </td>
+
 
 <td class="px-2 py-2">
   <input type="text" name="nombre_salon" value="{{ ev.nombre_salon }}"
@@ -375,6 +431,7 @@ def editar_evento(evento_id):
 
     ev.nombre_cliente = request.form.get('nombre_cliente')
     ev.tipo_evento = request.form.get('tipo_evento')
+    ev.tipo_fiesta = request.form.get('tipo_fiesta')
     ev.fecha_evento = datetime.strptime(request.form.get('fecha_evento'), "%Y-%m-%d")
     ev.hora_inicio = request.form.get('hora_inicio')
     ev.hora_termino = request.form.get('hora_termino')
@@ -438,9 +495,9 @@ def exportar():
     eventos = query.all()
 
     headers = [
-        "id", "tipo_evento", "nombre_cliente", "whatsapp", "fecha_evento",
+        "id", "tipo_evento", "tipo_fiesta", "nombre_cliente", "whatsapp", "fecha_evento",
         "hora_inicio", "hora_termino", "cantidad_horas", "servicios_interes",
-        "municipio", "nombre_salon", "direccion", "fecha_registro",
+        "municipio","nombre_salon", "direccion", "fecha_registro",
         "folio_manual", "total", "anticipo", "restan", "comentarios"
     ]
 

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template_string, request, redirect, url_for, flash
-from models import Servicio, Municipio
+from models import Servicio, Municipio, Tipo_fiesta
 from extensiones import db
 
 gestion_bp = Blueprint('gestion', __name__, url_prefix='/gestion')
@@ -36,6 +36,15 @@ MUNICIPIOS_INICIALES = [
 ]
 
 # -----------------------------
+# TIPOS DE FIESTA INICIALES
+# -----------------------------
+TIPOS_FIESTA_INICIALES = [
+    "BODA",
+    "CUMPLEAÑOS",
+    "QUINCEAÑERA"
+]
+
+# -----------------------------
 # INICIALIZADORES
 # -----------------------------
 def inicializar_servicios():
@@ -56,6 +65,13 @@ def inicializar_municipios():
             db.session.add(Municipio(nombre=nombre))
     db.session.commit()
 
+
+def inicializar_tipos_fiesta():
+    for nombre in TIPOS_FIESTA_INICIALES:
+        if not Tipo_fiesta.query.filter_by(nombre=nombre).first():
+            db.session.add(Tipo_fiesta(nombre=nombre))
+    db.session.commit()
+
 # -----------------------------
 # INDEX
 # -----------------------------
@@ -63,9 +79,11 @@ def inicializar_municipios():
 def index():
     inicializar_servicios()
     inicializar_municipios()
+    inicializar_tipos_fiesta()
 
     servicios = Servicio.query.order_by(Servicio.tipo, Servicio.nombre).all()
     municipios = Municipio.query.order_by(Municipio.nombre).all()
+    tipos_fiesta = Tipo_fiesta.query.order_by(Tipo_fiesta.nombre).all()
 
     return render_template_string("""
 <!DOCTYPE html>
@@ -111,7 +129,7 @@ onclick="return confirm('¿Eliminar servicio?')">🗑️</a>
 <a href="{{ url_for('gestion.agregar_municipio') }}"
 class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">➕ Municipio</a>
 
-<table class="w-full bg-white shadow rounded">
+<table class="w-full bg-white shadow rounded mb-10">
 <thead class="bg-gray-200">
 <tr>
 <th>ID</th><th>Nombre</th><th>Acciones</th>
@@ -132,9 +150,35 @@ onclick="return confirm('¿Eliminar municipio?')">🗑️</a>
 </tbody>
 </table>
 
+<!-- TIPOS DE FIESTA -->
+<h2 class="text-2xl font-semibold mb-4">Tipos de Fiesta</h2>
+<a href="{{ url_for('gestion.agregar_tipo_fiesta') }}"
+class="bg-blue-500 text-white px-4 py-2 rounded mb-4 inline-block">➕ Tipo de fiesta</a>
+
+<table class="w-full bg-white shadow rounded">
+<thead class="bg-gray-200">
+<tr>
+<th>ID</th><th>Nombre</th><th>Acciones</th>
+</tr>
+</thead>
+<tbody>
+{% for t in tipos_fiesta %}
+<tr class="border-b">
+<td class="px-2">{{ t.id }}</td>
+<td>{{ t.nombre }}</td>
+<td class="flex gap-2">
+<a href="{{ url_for('gestion.editar_tipo_fiesta', id=t.id) }}" class="text-yellow-600">✏️</a>
+<a href="{{ url_for('gestion.eliminar_tipo_fiesta', id=t.id) }}" class="text-red-600"
+onclick="return confirm('¿Eliminar tipo de fiesta?')">🗑️</a>
+</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
 </body>
 </html>
-""", servicios=servicios, municipios=municipios)
+""", servicios=servicios, municipios=municipios, tipos_fiesta=tipos_fiesta)
 
 # -----------------------------
 # CRUD SERVICIOS
@@ -226,5 +270,44 @@ def editar_municipio(id):
 def eliminar_municipio(id):
     m = Municipio.query.get_or_404(id)
     db.session.delete(m)
+    db.session.commit()
+    return redirect(url_for('gestion.index'))
+
+# -----------------------------
+# CRUD TIPOS DE FIESTA
+# -----------------------------
+@gestion_bp.route('/tipo-fiesta/agregar', methods=['GET', 'POST'])
+def agregar_tipo_fiesta():
+    if request.method == 'POST':
+        db.session.add(Tipo_fiesta(nombre=request.form['nombre'].upper()))
+        db.session.commit()
+        return redirect(url_for('gestion.index'))
+
+    return render_template_string("""
+<form method="POST">
+<input name="nombre" placeholder="Tipo de fiesta" required>
+<button>Guardar</button>
+</form>
+""")
+
+@gestion_bp.route('/tipo-fiesta/editar/<int:id>', methods=['GET', 'POST'])
+def editar_tipo_fiesta(id):
+    t = Tipo_fiesta.query.get_or_404(id)
+    if request.method == 'POST':
+        t.nombre = request.form['nombre'].upper()
+        db.session.commit()
+        return redirect(url_for('gestion.index'))
+
+    return render_template_string("""
+<form method="POST">
+<input name="nombre" value="{{ t.nombre }}">
+<button>Guardar</button>
+</form>
+""", t=t)
+
+@gestion_bp.route('/tipo-fiesta/eliminar/<int:id>')
+def eliminar_tipo_fiesta(id):
+    t = Tipo_fiesta.query.get_or_404(id)
+    db.session.delete(t)
     db.session.commit()
     return redirect(url_for('gestion.index'))
