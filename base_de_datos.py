@@ -56,7 +56,9 @@ def aplicar_filtros(query, tipo_evento, fecha_desde, fecha_hasta, qsearch):
             db.or_(
                 Evento.nombre_cliente.ilike(like),
                 Evento.nombre_salon.ilike(like),
-                Evento.direccion.ilike(like)
+                Evento.direccion.ilike(like),
+                Evento.folio_manual.ilike(like)
+
             )
         )
     return query
@@ -110,17 +112,19 @@ def lista_eventos():
     fecha_desde = request.args.get('fecha_desde', '')
     fecha_hasta = request.args.get('fecha_hasta', '')
     qsearch = request.args.get('q', '')
-    page = request.args.get('page', 1, type=int)
-    per_page = 10
 
     query = Evento.query.order_by(Evento.fecha_evento.asc(), Evento.id.asc())
-    query = aplicar_filtros(query, tipo_evento or None, fecha_desde or None, fecha_hasta or None, qsearch or None)
+    query = aplicar_filtros(
+        query,
+        tipo_evento or None,
+        fecha_desde or None,
+        fecha_hasta or None,
+        qsearch or None
+    )
 
-    total = query.count()
-    pages = max(1, math.ceil(total / per_page))
-    eventos = query.offset((page - 1) * per_page).limit(per_page).all()
+    eventos = query.all()
+    total = len(eventos)
 
-    # enviar datetime al template
     return render_template_string("""
 <!DOCTYPE html>
 <html lang="es">
@@ -166,20 +170,23 @@ function enableEdit(id) {
 
     <div>
       <a href="{{ url_for('home') }}" 
-         class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg mr-2">⬅️ Inicio</a>
+         class="bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2 rounded-lg mr-2">
+         ⬅️ Inicio
+      </a>
 
-    <a href="{{ url_for('generar_contrato.generar_contrato') }}"
-   class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg mr-2">
-    📝 Generar contrato
-</a>
-
+      <a href="{{ url_for('generar_contrato.generar_contrato') }}"
+         class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg mr-2">
+         📝 Generar contrato
+      </a>
 
       <a href="{{ url_for('base_de_datos.exportar',
                            tipo_evento=tipo_evento,
                            fecha_desde=fecha_desde,
                            fecha_hasta=fecha_hasta,
                            q=qsearch) }}"
-         class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">📥 Exportar</a>
+         class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg">
+         📥 Exportar
+      </a>
     </div>
   </div>
 
@@ -206,7 +213,7 @@ function enableEdit(id) {
 
     <div class="md:col-span-2">
       <label class="block text-sm font-semibold">Buscar</label>
-      <input type="text" name="q" value="{{ qsearch }}" placeholder="Cliente / Salón / Dirección"
+      <input type="text" name="q" value="{{ qsearch }}" placeholder="Cliente / Salón / Dirección / Folio"
              class="mt-1 block w-full p-2 border rounded">
     </div>
 
@@ -224,24 +231,24 @@ function enableEdit(id) {
 
 <thead>
 <tr class="bg-blue-100 font-semibold text-gray-700 text-center">
-    <th class="px-2 py-2">ID</th>
-    <th class="px-2 py-2">Cliente</th>
-    <th class="px-2 py-2">Tipo</th>
-    <th class="px-2 py-2">Tipo de Fiesta</th>
-    <th class="px-2 py-2">Fecha</th>
-    <th class="px-2 py-2">Inicio</th>
-    <th class="px-2 py-2">Fin</th>
-    <th class="px-2 py-2">Horas</th>
-    <th class="px-2 py-2">Municipio</th>
-    <th class="px-2 py-2">Salón</th>
-    <th class="px-2 py-2">Dirección</th>
-    <th class="px-2 py-2">Total</th>
-    <th class="px-2 py-2">Anticipo</th>
-    <th class="px-2 py-2">Restan</th>
-    <th class="px-2 py-2">Comentarios</th>
-    <th class="px-2 py-2">Folio</th>
-    <th class="px-2 py-2">Editar</th>
-    <th class="px-2 py-2">Eliminar</th>
+    <th>ID</th>
+    <th>Cliente</th>
+    <th>Tipo</th>
+    <th>Tipo de Fiesta</th>
+    <th>Fecha</th>
+    <th>Inicio</th>
+    <th>Fin</th>
+    <th>Horas</th>
+    <th>Municipio</th>
+    <th>Salón</th>
+    <th>Dirección</th>
+    <th>Total</th>
+    <th>Anticipo</th>
+    <th>Restan</th>
+    <th>Comentarios</th>
+    <th>Folio</th>
+    <th>Editar</th>
+    <th>Eliminar</th>
 </tr>
 </thead>
 
@@ -249,177 +256,67 @@ function enableEdit(id) {
 {% for ev in eventos %}
 <tr class="hover:bg-blue-50 text-center">
 
+<td>{{ ev.id }}</td>
+
+<!-- FORM de edición por fila -->
 <form method="POST" action="{{ url_for('base_de_datos.editar_evento', evento_id=ev.id) }}">
-
-<td class="px-2 py-2">{{ ev.id }}</td>
-
-<td class="px-2 py-2">
-  <input type="text" name="nombre_cliente" value="{{ ev.nombre_cliente }}"
-         class="editable-{{ ev.id }} w-full border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <select name="tipo_evento"
-          class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
+<td><input name="nombre_cliente" value="{{ ev.nombre_cliente }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td>
+  <select name="tipo_evento" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled>
     <option value="Pintacaritas" {% if ev.tipo_evento=='Pintacaritas' %}selected{% endif %}>Pintacaritas</option>
     <option value="Glitter" {% if ev.tipo_evento=='Glitter' %}selected{% endif %}>Glitter</option>
   </select>
 </td>
+<td><input name="tipo_fiesta" value="{{ ev.tipo_fiesta }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input type="date" name="fecha_evento" value="{{ ev.fecha_evento.strftime('%Y-%m-%d') if ev.fecha_evento }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="hora_inicio" value="{{ ev.hora_inicio }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="hora_termino" value="{{ ev.hora_termino }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="cantidad_horas" value="{{ ev.cantidad_horas }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="municipio" value="{{ ev.municipio }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="nombre_salon" value="{{ ev.nombre_salon }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="direccion" value="{{ ev.direccion }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="total" value="{{ ev.total }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="anticipo" value="{{ ev.anticipo }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="restan" value="{{ ev.restan }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><textarea name="comentarios" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled>{{ ev.comentarios }}</textarea></td>
+<td><input name="folio_manual" value="{{ ev.folio_manual }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 
-<td class="px-2 py-2">
-  <input type="text" name="tipo_fiesta" value="{{ ev.tipo_fiesta}}"
-         class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
+<td>
+  <button type="button" onclick="enableEdit({{ ev.id }})" id="edit-btn-{{ ev.id }}" class="bg-yellow-500 text-white px-2 py-1 rounded">✏️</button>
+  <button type="submit" id="save-btn-{{ ev.id }}" class="hidden bg-green-600 text-white px-2 py-1 rounded">💾</button>
 </td>
-
-<td class="px-2 py-2">
-  <input type="date" name="fecha_evento"
-         value="{{ ev.fecha_evento.strftime('%Y-%m-%d') if ev.fecha_evento }}"
-         class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <input type="text" name="hora_inicio" value="{{ ev.hora_inicio }}"
-         class="editable-{{ ev.id }} w-16 border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <input type="text" name="hora_termino" value="{{ ev.hora_termino }}"
-         class="editable-{{ ev.id }} w-16 border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <input name="cantidad_horas" value="{{ ev.cantidad_horas }}"
-         class="editable-{{ ev.id }} w-16 border rounded bg-gray-100 text-center" disabled>
-</td>
-
-
-<td class="px-2 py-2">
-  <input type="text" name="municipio" value="{{ ev.municipio }}"
-         class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
-</td>
-
-
-<td class="px-2 py-2">
-  <input type="text" name="nombre_salon" value="{{ ev.nombre_salon }}"
-         class="editable-{{ ev.id }} border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <input type="text" name="direccion" value="{{ ev.direccion }}"
-         class="editable-{{ ev.id }} w-full border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <input type="number" step="0.01" name="total" value="{{ ev.total }}"
-         class="editable-{{ ev.id }} w-20 text-center border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <input type="number" step="0.01" name="anticipo" value="{{ ev.anticipo }}"
-         class="editable-{{ ev.id }} w-20 text-center border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <input type="number" step="0.01" name="restan" value="{{ ev.restan }}"
-         class="editable-{{ ev.id }} w-20 text-center border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-2 py-2">
-  <textarea name="comentarios"
-            class="editable-{{ ev.id }} w-32 border rounded bg-gray-100" disabled>{{ ev.comentarios }}</textarea>
-</td>
-
-<td class="px-2 py-2">
-  <input type="text" name="folio_manual" value="{{ ev.folio_manual }}"
-         class="editable-{{ ev.id }} w-20 border rounded bg-gray-100" disabled>
-</td>
-
-<td class="px-1 py-2">
-  <button type="button"
-          onclick="enableEdit({{ ev.id }})"
-          id="edit-btn-{{ ev.id }}"
-          class="bg-yellow-500 hover:bg-yellow-600 text-white px-2 py-1 rounded text-xs">
-      ✏️
-  </button>
-
-  <button type="submit"
-          id="save-btn-{{ ev.id }}"
-          class="hidden bg-green-600 hover:bg-green-700 text-white px-2 py-1 rounded text-xs">
-      💾
-  </button>
-</td>
-
 </form>
 
-<td class="px-1 py-2">
-  <form method="POST"
-        action="{{ url_for('base_de_datos.eliminar_evento', evento_id=ev.id) }}"
-        onsubmit="return confirmarEliminacion()">
-      <button type="submit"
-              class="bg-red-600 hover:bg-red-700 text-white px-2 py-1 rounded text-xs">
-          🗑️
-      </button>
-  </form>
+<td>
+<form method="POST" action="{{ url_for('base_de_datos.eliminar_evento', evento_id=ev.id) }}" onsubmit="return confirmarEliminacion()">
+<button class="bg-red-600 text-white px-2 py-1 rounded">🗑️</button>
+</form>
 </td>
 
 </tr>
 {% endfor %}
 </tbody>
-
-
 </table>
 </div>
 
-        
-  <!-- PAGINACIÓN -->
-  <div class="flex justify-between items-center mt-4 text-sm">
-    {% if page > 1 %}
-      <a href="{{ url_for('base_de_datos.lista_eventos',
-                          page=page-1,
-                          tipo_evento=tipo_evento,
-                          fecha_desde=fecha_desde,
-                          fecha_hasta=fecha_hasta,
-                          q=qsearch) }}"
-         class="px-3 py-1 bg-gray-200 rounded">« Anterior</a>
-    {% else %}
-      <span></span>
-    {% endif %}
-
-    <span>Página {{ page }} de {{ pages }}</span>
-
-    {% if page < pages %}
-      <a href="{{ url_for('base_de_datos.lista_eventos',
-                          page=page+1,
-                          tipo_evento=tipo_evento,
-                          fecha_desde=fecha_desde,
-                          fecha_hasta=fecha_hasta,
-                          q=qsearch) }}"
-         class="px-3 py-1 bg-gray-200 rounded">Siguiente »</a>
-    {% endif %}
-  </div>
-
 </div>
-
 </body>
 </html>
 """,
-        eventos=eventos,
-        total=total,
-        page=page,
-        pages=pages,
-        tipo_evento=tipo_evento,
-        fecha_desde=fecha_desde,
-        fecha_hasta=fecha_hasta,
-        qsearch=qsearch,
-        datetime=datetime
-    )
+    eventos=eventos,
+    total=total,
+    tipo_evento=tipo_evento,
+    fecha_desde=fecha_desde,
+    fecha_hasta=fecha_hasta,
+    qsearch=qsearch,
+    datetime=datetime
+)
 
 
 # =====================================================
 #                 GUARDAR CAMBIOS
 # =====================================================
 @base_de_datos_bp.route('/editar/<int:evento_id>', methods=['POST'])
-
 def editar_evento(evento_id):
     ev = Evento.query.get_or_404(evento_id)
 
@@ -432,24 +329,39 @@ def editar_evento(evento_id):
     ev.nombre_cliente = request.form.get('nombre_cliente')
     ev.tipo_evento = request.form.get('tipo_evento')
     ev.tipo_fiesta = request.form.get('tipo_fiesta')
-    ev.fecha_evento = datetime.strptime(request.form.get('fecha_evento'), "%Y-%m-%d")
+    
+    fecha_str = request.form.get('fecha_evento')
+    try:
+        ev.fecha_evento = datetime.strptime(fecha_str, "%Y-%m-%d")
+    except (ValueError, TypeError):
+        ev.fecha_evento = None
+
     ev.hora_inicio = request.form.get('hora_inicio')
     ev.hora_termino = request.form.get('hora_termino')
+    ev.cantidad_horas = request.form.get('cantidad_horas')
     ev.municipio = request.form.get('municipio')
     ev.nombre_salon = request.form.get('nombre_salon')
     ev.direccion = request.form.get('direccion')
 
     ev.total = safe_float(request.form.get('total'))
     ev.anticipo = safe_float(request.form.get('anticipo'))
+    
+    # recalcular restan automáticamente
+    if ev.total is not None and ev.anticipo is not None:
+        ev.restan = ev.total - ev.anticipo
+    else:
+        ev.restan = None
+
     ev.restan = safe_float(request.form.get('restan'))
     ev.comentarios = request.form.get('comentarios')
     ev.folio_manual = request.form.get('folio_manual')
 
-    if ev.total is not None and ev.anticipo is not None:
-        ev.restan = ev.total - ev.anticipo
-
-    db.session.commit()
-    flash("✅ Registro actualizado correctamente", "success")
+    try:
+        db.session.commit()
+        flash("✅ Registro actualizado correctamente", "success")
+    except Exception as e:
+        db.session.rollback()
+        flash(f"❌ Error al actualizar: {e}", "error")
 
     return redirect(request.referrer)
 

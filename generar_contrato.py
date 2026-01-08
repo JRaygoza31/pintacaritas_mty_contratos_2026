@@ -50,6 +50,9 @@ def generar_contrato_pintacaritas(evento):
     can.drawString(370, 498, ("(" + str(evento.cantidad_horas or "") + ")").upper())
 
     can.drawString(240, 452, ("(" + str(evento.nombre_salon or "") + ")").upper())
+    
+    can.setFont("Helvetica-Bold", 10)
+    can.setFillColor(colors.blue)
     can.drawString(240, 418, f"{(evento.municipio or '').upper()} - {(evento.direccion or '').upper()}")
 
     can.setFont("Helvetica-Bold", 10)
@@ -57,16 +60,16 @@ def generar_contrato_pintacaritas(evento):
     y = 386
     for i, linea in enumerate(lineas):
         can.drawString(240, y - i*10, linea.strip())
-    can.drawString(390, 362, "(INCLUYE)")
+    can.drawString(370, 362, evento.comentarios or "")
 
     can.setFont("Helvetica-Bold", 12)
     can.drawString(240, 320, str(evento.nombre_cliente or "").upper())
     can.drawString(240, 287, str(evento.whatsapp or "").upper())
 
     can.setFillColor(colors.black)
-    can.drawString(153, 215, str(evento.total or ""))
-    can.drawString(278, 215, str(evento.anticipo or ""))
-    can.drawString(403, 215, str(evento.restan or ""))
+    can.drawString(153, 215, f"${evento.total if evento.total is not None else 0}")
+    can.drawString(278, 215, f"${evento.anticipo if evento.anticipo is not None else 0}")
+    can.drawString(403, 215, f"${evento.restan if evento.restan is not None else 0}")
     can.save()
 
     packet.seek(0)
@@ -99,6 +102,8 @@ def generar_contrato_glitter(evento):
 
     texto_horario = f"{str(evento.hora_inicio or '').upper()} - {str(evento.hora_termino or '').upper()} ({str(evento.cantidad_horas or '')})"
     can.drawString(230, 445, texto_horario)
+    
+    can.setFont("Helvetica-Bold", 10)
     can.drawString(230, 390, ("(" + str(evento.nombre_salon or "") + ")").upper())
     can.drawString(230, 372, f"{(evento.municipio or '').upper()} - {(evento.direccion or '').upper()}")
 
@@ -106,13 +111,16 @@ def generar_contrato_glitter(evento):
     y = 325
     for i, linea in enumerate(lineas):
         can.drawString(230, y - i*10, linea.strip())
-    can.drawString(390, 312, "(INCLUYE)")
+    
+    can.setFont("Helvetica-Bold", 10)
+    can.drawString(360, 305, evento.comentarios or "")
 
+    can.setFont("Helvetica-Bold", 12)
     can.drawString(230, 267, str(evento.nombre_cliente or "").upper())
     can.drawString(230, 247, str(evento.whatsapp or "").upper())
-    can.drawString(123, 163, str(evento.total or ""))
-    can.drawString(248, 163, str(evento.anticipo or ""))
-    can.drawString(373, 163, str(evento.restan or ""))
+    can.drawString(123, 163, f"${evento.total if evento.total is not None else 0}")
+    can.drawString(248, 163, f"${evento.anticipo if evento.anticipo is not None else 0}")
+    can.drawString(373, 163, f"${evento.restan if evento.restan is not None else 0}")
     can.save()
 
     packet.seek(0)
