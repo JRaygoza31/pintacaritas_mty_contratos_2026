@@ -47,17 +47,25 @@ def seleccionar_formulario():
   <title>Seleccionar formulario</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <style>
-  body {
+body {
     background: linear-gradient(135deg, #2563eb, #7c3aed, #ec4899);
+    background-size: 200% 200%;
+    animation: fondomove 12s ease infinite;
     min-height: 100vh;
     margin: 0;
     display: flex;
     align-items: center;
     justify-content: center;
     font-family: 'Inter', sans-serif;
-  }
+}
 
-  .overlay {
+@keyframes fondomove {
+    0% { background-position: 0% 0%; }
+    50% { background-position: 100% 100%; }
+    100% { background-position: 0% 0%; }
+}
+
+.overlay {
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(8px);
     border-radius: 1rem;
@@ -65,9 +73,9 @@ def seleccionar_formulario():
     box-shadow: 0 10px 30px rgba(0,0,0,0.2);
     width: 100%;
     max-width: 900px;
-  }
-  </style>
-</head>
+}
+</style>
+
 
 <body>
   <div class="overlay text-white rounded-2xl p-8 w-full max-w-4xl mx-auto">
@@ -123,7 +131,7 @@ def registro_exitoso():
     body {
             background: linear-gradient(135deg, #3b82f6, #9333ea, #ec4899);
             background-size: 200% 200%;
-            animation: fondomove 12s ease infinite;
+            animation: fondomove 8s ease infinite;
         }
         @keyframes fondomove {
             0% { background-position: 0% 0%; }
@@ -153,7 +161,6 @@ def registro_exitoso():
       <p><strong>Horas:</strong> {{ evento.cantidad_horas }}</p>
       <p><strong>Servicios:</strong> {{ evento.servicios_interes }}</p>
       <p><strong>Municipio:</strong> {{ evento.municipio }}</p>
-      <p><strong>Tipo_fiesta:</strong> {{ evento.tipo_fiesta }}</p>
       <p><strong>Salón:</strong> {{ evento.nombre_salon or 'N/A' }}</p>
       <p><strong>Dirección:</strong> {{ evento.direccion or 'N/A' }}</p>
     </div>

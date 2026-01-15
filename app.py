@@ -267,12 +267,12 @@ document.addEventListener("DOMContentLoaded", () => {
         const hoy = new Date();
         const fechaEvento = new Date(fecha);
 
-        if (fechaEvento < hoy.setHours(0,0,0,0)) return "#22c55e"; // verde evento pasado
+        if (fechaEvento < hoy.setHours(0,0,0,0)) return "#AAAAAA"; // verde evento pasado
         if (!folio || folio === "None") return "#dc2626"; // rojo sin folio
 
         tipo = tipo?.toLowerCase() || "";
-        if (tipo.includes("pintacaritas")) return "#ec4899";
-        if (tipo.includes("glitter")) return "#3b82f6";
+        if (tipo.includes("pintacaritas")) return "#9AEF9E";
+        if (tipo.includes("glitter")) return "#178C1D";
 
         return "#9333ea";
     }

@@ -45,22 +45,75 @@ def generar_contrato_pintacaritas(evento):
     can.setFillColor(colors.blue)
     can.drawString(240, 543, fecha_larga)
 
-    can.drawString(240, 498, str(evento.hora_inicio or "").upper())
-    can.drawString(295, 498, ("- " + str(evento.hora_termino or "")).upper())
-    can.drawString(370, 498, ("(" + str(evento.cantidad_horas or "") + ")").upper())
+   # Horario
+    texto = (
+        f"{evento.hora_inicio or ''} - {evento.hora_termino or ''}"
+        f"     ({evento.cantidad_horas or ''} HORAS)"
+    ).upper()
 
-    can.drawString(240, 452, ("(" + str(evento.nombre_salon or "") + ")").upper())
+    can.drawString(240, 498, texto)
+
+
+
+    can.drawString(240, 452, (str(evento.nombre_salon or "")).upper())
     
     can.setFont("Helvetica-Bold", 10)
     can.setFillColor(colors.blue)
-    can.drawString(240, 418, f"{(evento.municipio or '').upper()} - {(evento.direccion or '').upper()}")
+    def wrap_text_by_space(texto, max_chars=3):
+        palabras = texto.split(" ")
+        lineas = []
+        linea_actual = ""
+
+        for palabra in palabras:
+            if len(linea_actual) + len(palabra) + 1 <= max_chars:
+                linea_actual += (palabra + " ")
+            else:
+                lineas.append(linea_actual.strip())
+                linea_actual = palabra + " "
+
+        if linea_actual:
+            lineas.append(linea_actual.strip())
+
+        return lineas
+      
+    texto = f"{(evento.municipio or '').upper()} - {(evento.direccion or '').upper()}"
+
+    lineas = wrap_text_by_space(texto, 38)
+
+    y = 423
+    for linea in lineas:
+        can.drawString(240, y, linea)
+        y -= 12  # espacio entre líneas
 
     can.setFont("Helvetica-Bold", 10)
-    lineas = str(evento.servicios_interes or "").replace(',', '\n').split('\n')
-    y = 386
-    for i, linea in enumerate(lineas):
-        can.drawString(240, y - i*10, linea.strip())
-    can.drawString(370, 362, evento.comentarios or "")
+
+    def w(t,m=40):
+        p=t.split(" ");l=[];c=""
+        for x in p:
+            if len(c)+len(x)+1<=m:c+=x+" "
+            else:l.append(c.strip());c=x+" "
+        if c:l.append(c.strip())
+        return l
+
+    can.setFont("Helvetica-Bold",10)
+    s=str(evento.servicios_interes or "").upper().replace(",","\n").split("\n")
+    lf=[]
+    for x in s:lf+=w(x.strip(),40)
+    y=386
+    for i,l in enumerate(lf):
+        ya=y-i*10
+        can.setFont("ZapfDingbats",7);can.drawString(230,ya,"n")
+        can.setFont("Helvetica-Bold",10);can.drawString(240,ya,l)
+
+    yc=y-len(lf)*10
+    c=str(evento.comentarios or "").upper().replace(",","\n").split("\n")
+    cf=[]
+    for x in c:cf+=w(x.strip(),40)
+    for i,l in enumerate(cf):
+        can.drawString(240,yc-i*10,("NOTA: "+l) if i==0 else l)
+
+
+
 
     can.setFont("Helvetica-Bold", 12)
     can.drawString(240, 320, str(evento.nombre_cliente or "").upper())
@@ -87,6 +140,8 @@ def generar_contrato_pintacaritas(evento):
     output.seek(0)
     return output
 
+### GLITTER ###
+
 def generar_contrato_glitter(evento):
     packet = BytesIO()
     can = canvas.Canvas(packet, pagesize=letter)
@@ -100,20 +155,70 @@ def generar_contrato_glitter(evento):
     can.setFont("Helvetica-Bold", 12)
     can.drawString(230, 492, fecha_larga)
 
-    texto_horario = f"{str(evento.hora_inicio or '').upper()} - {str(evento.hora_termino or '').upper()} ({str(evento.cantidad_horas or '')})"
+    texto_horario = (
+        f"{str(evento.hora_inicio or '').upper()} - "
+        f"{str(evento.hora_termino or '').upper()} "
+        f"({str(evento.cantidad_horas or '')} HORAS)"
+    )
     can.drawString(230, 445, texto_horario)
     
     can.setFont("Helvetica-Bold", 10)
-    can.drawString(230, 390, ("(" + str(evento.nombre_salon or "") + ")").upper())
-    can.drawString(230, 372, f"{(evento.municipio or '').upper()} - {(evento.direccion or '').upper()}")
+    can.drawString(230, 395, (str(evento.nombre_salon or "") ).upper())
+    def wrap40(t):
+        p=t.split(" ");l=[];c=""
+        for w in p:
+            if len(c)+len(w)+1<=40:c+=w+" "
+            else:l.append(c.strip());c=w+" "
+        if c:l.append(c.strip())
+        return l
 
-    lineas = str(evento.servicios_interes or "").replace(',', '\n').split('\n')
+    texto=f"{(evento.municipio or '').upper()} - {(evento.direccion or '').upper()}"
+    lineas=wrap40(texto)
+    y=380
+    for i,l in enumerate(lineas):
+        can.drawString(230,y-i*10,l)
+
+    def wrap_text_by_space(texto, max_chars=40):
+        palabras = texto.split(" ")
+        lineas = []
+        linea_actual = ""
+        for palabra in palabras:
+            if len(linea_actual) + len(palabra) + 1 <= max_chars:
+                linea_actual += palabra + " "
+            else:
+                lineas.append(linea_actual.strip())
+                linea_actual = palabra + " "
+        if linea_actual:
+            lineas.append(linea_actual.strip())
+        return lineas
+
+    # Servicios con viñeta
+    servicios = str(evento.servicios_interes or "").upper().replace(",", "\n").split("\n")
     y = 325
-    for i, linea in enumerate(lineas):
-        can.drawString(230, y - i*10, linea.strip())
+    salto = 10
+    lineas_totales = []
+
+    for servicio in servicios:
+        lineas = wrap_text_by_space(servicio.strip(), 40)
+        for l in lineas:
+            can.setFont("ZapfDingbats", 6)
+            can.drawString(220, y, "n")
+            can.setFont("Helvetica-Bold", 10)
+            can.drawString(230, y, l)
+            y -= salto
+        lineas_totales.extend(lineas)
+
+    # Comentarios sin viñeta, pero con salto automático
+    comentarios = str(evento.comentarios or "").upper().replace(",", "\n").split("\n")
+    for comentario in comentarios:
+        lineas = wrap_text_by_space(comentario.strip(), 40)
+        for i, l in enumerate(lineas):
+            texto = f"NOTA: {l}" if i == 0 else l
+            can.setFont("Helvetica-Bold", 10)
+            can.drawString(230, y, texto)
+            y -= salto
+
     
-    can.setFont("Helvetica-Bold", 10)
-    can.drawString(360, 305, evento.comentarios or "")
 
     can.setFont("Helvetica-Bold", 12)
     can.drawString(230, 267, str(evento.nombre_cliente or "").upper())

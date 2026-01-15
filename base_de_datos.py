@@ -102,7 +102,6 @@ def password():
     </html>
     """)
 
-
 # =====================================================
 #                 LISTA DE EVENTOS
 # =====================================================
@@ -112,8 +111,25 @@ def lista_eventos():
     fecha_desde = request.args.get('fecha_desde', '')
     fecha_hasta = request.args.get('fecha_hasta', '')
     qsearch = request.args.get('q', '')
+    orden = request.args.get('orden', 'fecha')
 
-    query = Evento.query.order_by(Evento.fecha_evento.asc(), Evento.id.asc())
+    from sqlalchemy import case
+    from datetime import date
+
+    hoy = date.today()
+
+    if orden == "llenado":
+        query = Evento.query.order_by(Evento.id.desc())
+    else:
+        query = Evento.query.order_by(
+            case(
+                (Evento.fecha_evento >= hoy, 0),
+                else_=1
+            ),
+            Evento.fecha_evento.asc(),
+            Evento.id.asc()
+        )
+
     query = aplicar_filtros(
         query,
         tipo_evento or None,
@@ -124,6 +140,8 @@ def lista_eventos():
 
     eventos = query.all()
     total = len(eventos)
+
+
 
     return render_template_string("""
 <!DOCTYPE html>
@@ -191,39 +209,54 @@ function enableEdit(id) {
   </div>
 
   <!-- FILTROS -->
-  <form method="GET" class="bg-blue-50 p-4 rounded-lg shadow mb-4 grid grid-cols-1 md:grid-cols-6 gap-3">
-    <div>
-      <label class="block text-sm font-semibold">Tipo de evento</label>
-      <select name="tipo_evento" class="mt-1 block w-full p-2 border rounded">
-        <option value="">Todos</option>
-        <option value="Pintacaritas" {% if tipo_evento == 'Pintacaritas' %}selected{% endif %}>Pintacaritas</option>
-        <option value="Glitter" {% if tipo_evento == 'Glitter' %}selected{% endif %}>Glitter</option>
-      </select>
-    </div>
+  <form method="GET" class="bg-blue-50 p-4 rounded-lg shadow mb-4 grid grid-cols-1 md:grid-cols-7 gap-3">
+  <!-- Tipo de evento -->
+  <div>
+    <label class="block text-sm font-semibold">Tipo de evento</label>
+    <select name="tipo_evento" class="mt-1 block w-full p-2 border rounded">
+      <option value="">Todos</option>
+      <option value="Pintacaritas" {% if tipo_evento == 'Pintacaritas' %}selected{% endif %}>Pintacaritas</option>
+      <option value="Glitter" {% if tipo_evento == 'Glitter' %}selected{% endif %}>Glitter</option>
+    </select>
+  </div>
 
-    <div>
-      <label class="block text-sm font-semibold">Desde</label>
-      <input type="date" name="fecha_desde" value="{{ fecha_desde }}" class="mt-1 block w-full p-2 border rounded">
-    </div>
+  <!-- Desde -->
+  <div>
+    <label class="block text-sm font-semibold">Desde</label>
+    <input type="date" name="fecha_desde" value="{{ fecha_desde }}" class="mt-1 block w-full p-2 border rounded">
+  </div>
 
-    <div>
-      <label class="block text-sm font-semibold">Hasta</label>
-      <input type="date" name="fecha_hasta" value="{{ fecha_hasta }}" class="mt-1 block w-full p-2 border rounded">
-    </div>
+  <!-- Hasta -->
+  <div>
+    <label class="block text-sm font-semibold">Hasta</label>
+    <input type="date" name="fecha_hasta" value="{{ fecha_hasta }}" class="mt-1 block w-full p-2 border rounded">
+  </div>
 
-    <div class="md:col-span-2">
-      <label class="block text-sm font-semibold">Buscar</label>
-      <input type="text" name="q" value="{{ qsearch }}" placeholder="Cliente / Salón / Dirección / Folio"
-             class="mt-1 block w-full p-2 border rounded">
-    </div>
+  <!-- Buscar -->
+  <div class="md:col-span-2">
+    <label class="block text-sm font-semibold">Buscar</label>
+    <input type="text" name="q" value="{{ qsearch }}" placeholder="Cliente / Salón / Dirección / Folio"
+           class="mt-1 block w-full p-2 border rounded">
+  </div>
 
-    <div class="flex items-end">
-      <button type="submit"
-              class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
-        Filtrar
-      </button>
-    </div>
-  </form>
+  <!-- Nuevo: Ordenar por -->
+  <div>
+    <label class="block text-sm font-semibold">Ordenar por</label>
+    <select name="orden" class="mt-1 block w-full p-2 border rounded">
+      <option value="fecha" {% if orden == 'fecha' %}selected{% endif %}>Fecha del evento</option>
+      <option value="llenado" {% if orden == 'llenado' %}selected{% endif %}>Últimos capturados</option>
+    </select>
+  </div>
+
+  <!-- Botón filtrar -->
+  <div class="flex items-end">
+    <button type="submit"
+            class="w-full bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded">
+      Filtrar
+    </button>
+  </div>
+</form>
+
 
   <!-- TABLA -->
 <div class="overflow-auto rounded-lg shadow">
@@ -236,12 +269,14 @@ function enableEdit(id) {
     <th>Tipo</th>
     <th>Tipo de Fiesta</th>
     <th>Fecha</th>
+    <th>Servicios</th>
     <th>Inicio</th>
     <th>Fin</th>
     <th>Horas</th>
     <th>Municipio</th>
     <th>Salón</th>
     <th>Dirección</th>
+    <th>Teléfono</th>
     <th>Total</th>
     <th>Anticipo</th>
     <th>Restan</th>
@@ -269,12 +304,14 @@ function enableEdit(id) {
 </td>
 <td><input name="tipo_fiesta" value="{{ ev.tipo_fiesta }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input type="date" name="fecha_evento" value="{{ ev.fecha_evento.strftime('%Y-%m-%d') if ev.fecha_evento }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="servicios_interes" value="{{ ev.servicios_interes }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="hora_inicio" value="{{ ev.hora_inicio }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="hora_termino" value="{{ ev.hora_termino }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="cantidad_horas" value="{{ ev.cantidad_horas }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="municipio" value="{{ ev.municipio }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="nombre_salon" value="{{ ev.nombre_salon }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="direccion" value="{{ ev.direccion }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
+<td><input name="whatsapp" value="{{ ev.whatsapp}}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="total" value="{{ ev.total }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="anticipo" value="{{ ev.anticipo }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
 <td><input name="restan" value="{{ ev.restan }}" class="editable-{{ ev.id }} bg-gray-100 border rounded" disabled></td>
@@ -309,8 +346,9 @@ function enableEdit(id) {
     fecha_desde=fecha_desde,
     fecha_hasta=fecha_hasta,
     qsearch=qsearch,
-    datetime=datetime
-)
+    datetime=datetime,
+    orden=orden
+    )
 
 
 # =====================================================
@@ -335,14 +373,14 @@ def editar_evento(evento_id):
         ev.fecha_evento = datetime.strptime(fecha_str, "%Y-%m-%d")
     except (ValueError, TypeError):
         ev.fecha_evento = None
-
+    ev.servicios_interes = request.form.get('servicios_interes')
     ev.hora_inicio = request.form.get('hora_inicio')
     ev.hora_termino = request.form.get('hora_termino')
     ev.cantidad_horas = request.form.get('cantidad_horas')
     ev.municipio = request.form.get('municipio')
     ev.nombre_salon = request.form.get('nombre_salon')
     ev.direccion = request.form.get('direccion')
-
+    ev.whatsapp = request.form.get('whatsapp')
     ev.total = safe_float(request.form.get('total'))
     ev.anticipo = safe_float(request.form.get('anticipo'))
     
@@ -385,32 +423,55 @@ def eliminar_evento(evento_id):
 
     return redirect(url_for('base_de_datos.lista_eventos'))
 
-
 # =====================================================
 #                 EXPORTAR
 # =====================================================
 @base_de_datos_bp.route('/exportar')
-
-
 def exportar():
     tipo_evento = request.args.get('tipo_evento', '')
     fecha_desde = request.args.get('fecha_desde', '')
     fecha_hasta = request.args.get('fecha_hasta', '')
     qsearch = request.args.get('q', '')
+    orden = request.args.get('orden', 'fecha')  # 👈 NUEVO
 
-    query = aplicar_filtros(Evento.query,
-                            tipo_evento or None,
-                            fecha_desde or None,
-                            fecha_hasta or None,
-                            qsearch or None)
+    from sqlalchemy import case
+    from datetime import date
+
+    hoy = date.today()
+
+    query = aplicar_filtros(
+        Evento.query,
+        tipo_evento or None,
+        fecha_desde or None,
+        fecha_hasta or None,
+        qsearch or None
+    )
+
+    # ===============================
+    # ORDENAMIENTO
+    # ===============================
+    if orden == "llenado":
+        # 🔥 Últimos capturados primero
+        query = query.order_by(Evento.id.desc())
+    else:
+        # 📅 Eventos futuros primero, pasados al final
+        query = query.order_by(
+            case(
+                (Evento.fecha_evento >= hoy, 0),
+                else_=1
+            ),
+            Evento.fecha_evento.asc(),
+            Evento.id.asc()
+        )
 
     eventos = query.all()
 
     headers = [
-        "id", "tipo_evento", "tipo_fiesta", "nombre_cliente", "whatsapp", "fecha_evento",
-        "hora_inicio", "hora_termino", "cantidad_horas", "servicios_interes",
-        "municipio","nombre_salon", "direccion", "fecha_registro",
-        "folio_manual", "total", "anticipo", "restan", "comentarios"
+        "id", "tipo_evento", "tipo_fiesta", "nombre_cliente", "whatsapp",
+        "fecha_evento", "hora_inicio", "hora_termino", "cantidad_horas",
+        "servicios_interes", "municipio", "nombre_salon", "direccion",
+        "fecha_registro", "folio_manual", "total", "anticipo", "restan",
+        "comentarios"
     ]
 
     if PANDAS_AVAILABLE:
