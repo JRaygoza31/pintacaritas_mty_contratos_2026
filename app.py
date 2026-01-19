@@ -23,15 +23,18 @@ app.secret_key = "supersecretkey"
 app.jinja_env.globals.update(str=str)
 
 
+
 # ---------------------------
 # BASE DE DATOS
 # ---------------------------
 app.config['SQLALCHEMY_DATABASE_URI'] = (
-    "postgresql://pintacaritas_mty_contratos_user:"
-    "ptOFK2zrWL3lInvFTdBY57T1K6d5SoZb@"
-    "dpg-d52str24d50c73baihhg-a.oregon-postgres.render.com/"
-    "pintacaritas_mty_contratos"
+    "postgresql+psycopg2://prueba_b41b_user:"
+    "QpKAu3OLHdFcbBRYdLMIWPYzM9zTVJSg@"
+    "dpg-d5nakr14tr6s73d4gth0-a.oregon-postgres.render.com:5432/"
+    "prueba_b41b"
+    "?sslmode=require"
 )
+
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
 
